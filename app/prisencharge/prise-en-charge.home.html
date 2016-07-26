@@ -1,0 +1,30 @@
+<div class="wrapper">
+    <div class="headband ui blue basic inverted segment very padded">
+        <div class="ui container">
+            <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Choix du transport
+          <div class="sub header only mobile">1. Description</div>
+        </div>
+      </h2>
+        </div>
+    </div>
+    <cordon-progress [step]="1"></cordon-progress>
+    <div class="main-container ui text container">
+        <div class="ui divider hidden"></div>
+        <div class="ui container grid three column stackable">
+            <div class="column">
+                <a class="ui button big white fluid" (click)="onTransportClick('exapaq')">Points Relais</a>
+                <p>Trouvez le point relais le plus proche de chez vous pour déposer votre appareil et le récupérer après réparation.</p>
+            </div>
+            <div class="column">
+                <a class="ui button big white fluid" (click)="onTransportClick('colissimo')">Colissimo</a>
+                <p>Génération d'une étiquette colissimo prépayée directement en ligne.</p>
+            </div>
+            <div class="column">
+                <a class="ui button big white fluid" (click)="onTransportClick('direct')">Envoi directe</a>
+                <p>Nous vous communiquons l'adresse d'expedition pour la prise en charge de votre appareil.</p>
+            </div>
+        </div>
+    </div>
+</div>

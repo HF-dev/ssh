@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="headband ui blue basic inverted segment very padded">
+    <div class="ui container">
+      <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Prise en charge
+          <div class="sub header only mobile">1. Description</div>
+        </div>
+      </h2>
+    </div>
+  </div>
+
+
+  <cordon-progress [step]="0"></cordon-progress>
+
+
+  <div class="main-container ui text container">
+    <div class="ui stackable two column vertically grid">
+      <div class="ui row form">
+        <div class="column">
+          <device-select (deviceSelect)="onDeviceSelect($event)"></device-select>
+        </div>
+        <div class="column">
+          <panne-description (panneDescEvt)="onPanneDesc($event)"></panne-description>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

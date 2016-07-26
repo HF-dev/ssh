@@ -1,0 +1,18 @@
+<div class="field">
+    <label>Appareil</label>
+    <select class="ui dropdown" [(ngModel)]="appService.appDatas.userDeviceSelector.selectedUserDeviceId">
+        <option *ngFor="let device of appService.appDatas.userDeviceSelector.userDevices" value="{{device.id}}">{{device.product.label}}</option>
+    </select>
+</div>
+<div class="ui horizontal divider">
+    OU
+</div>
+<a data-modal="addProduct" class="ui fluid labeled icon button" (click)="NewProduct()">
+    Ajouter un nouvel appareil
+    <i class="add icon"></i>
+  </a>
+<div [ngClass]="{
+          'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'transition': true,
+          'hidden': !isModalActive, 'visible': isModalActive, 'active': isModalActive}" [ngStyle]="{display: isModalActive ? 'block' : 'none'}" (click)="closeModal()">
+    <product-mod (closeModal)="closeModal()" (newProduct)="onNewProduct($event)"></product-mod>
+</div>

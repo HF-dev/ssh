@@ -1,0 +1,37 @@
+<div id="RetourModal"
+    [ngClass]="{
+       'ui': true,
+       'small': true,
+       'modal': true,
+       'transition': true,
+       'visible': isOn,
+       'active': isOn,
+       'hidden': !isOn,
+       'dimmer': !isOn}"
+    [ngStyle]="{
+       marginTop: isOn ? '-275.5px' : '0px' ,
+       display: isOn ? 'block' : 'none'}" (click)="OnClick($event)">
+
+  <i class="close icon" (click)="toggleOff()"></i>
+  <div class="header">
+    Retour
+  </div>
+  <div class="content segment">
+    <div class="ui two column middle container aligned very relaxed stackable grid">
+
+      <div class="center aligned column">
+        <div class="ui blue button fluid">
+          Autre adresse de retour
+        </div>
+      </div>
+      <div class="ui vertical divider">
+        OU
+      </div>
+      <div class="column">
+        <div class="ui green button fluid">
+          Meme adresse
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

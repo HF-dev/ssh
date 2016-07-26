@@ -1,0 +1,26 @@
+<div id="deleteModal"
+      [ngClass]="{
+        'ui': true,
+        'small': true,
+        'modal': true,
+        'transition': true,
+        'visible': isOn,
+        'active': isOn,
+        'hidden': !isOn,
+        'dimmer': !isOn}"
+      [ngStyle]="{
+        marginTop: isOn ? '-275.5px' : '0px' ,
+        display: isOn ? 'block' : 'none'}"
+        (click)="OnClick($event)">
+
+  <i class="close icon" (click)="toggleOff()"></i>
+  <div class="header">
+    Etes-vous sûr de vouloir supprimer cet appareil ?
+  </div>
+  <div class="image content padded">
+      <div class="ui button red fluid" (click)="confirm()">
+        <i class="icon trash"></i>
+        Supprimer
+      </div>
+  </div>
+</div>

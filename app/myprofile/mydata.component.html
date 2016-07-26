@@ -1,0 +1,171 @@
+<div class="wrapper">
+    <div class="headband ui blue basic inverted segment very padded">
+        <div class="ui container">
+            <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Mes coordonnées
+ 
+        </div>
+      </h2>
+        </div>
+    </div>
+    <div class="main-container ui text container">
+        <form class="ui vertically grid" *ngIf="isReady">
+            <div class="ui row form">
+                <div class="sixteen wide column">
+                    <div class="list-item ui divided items">
+                        <a *ngIf="!isNameInput" (click)="OnInput('name')" class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Nom/Prénom
+                                </div>
+                                <div class="header">{{appService.userData.profile.firstName}} {{appService.userData.profile.lastName}}</div>
+                                <div class="extra">
+                                    <div class="ui right floated">
+                                        <i class="write icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div *ngIf="isNameInput" class="content">
+                            <form class="ui form container">
+                                <div class="field">
+                                    <label>Nom</label>
+                                    <div class="ui input">
+                                        <input type="text" [(ngModel)]="appService.userData.profile.lastName">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Prénom</label>
+                                    <div class="ui input">
+                                        <input type="text" [(ngModel)]="appService.userData.profile.firstName">
+                                    </div>
+                                </div>
+                                <div class="ui button green fluid" (click)="OnInput('name')">
+                                    <i class="icon check"></i> Valider
+                                </div>
+                            </form>
+                        </div>
+                        <a *ngIf="!isEmailInput" (click)="OnInput('email')" class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Email
+                                </div>
+                                <div class="header">{{appService.userData.profile.email}}</div>
+                                <div class="extra">
+                                    <div class="ui right floated">
+                                        <i class="write icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div *ngIf="isEmailInput" class="content">
+                            <form class="ui form container">
+                                <div class="field">
+                                    <label>Email </label>
+                                    <div class="ui input">
+                                        <input type="email" [(ngModel)]="appService.userData.profile.email">
+                                    </div>
+                                </div>
+                                <div class="ui button green fluid" (click)="OnInput('email')">
+                                    <i class="icon check"></i> Valider
+                                </div>
+                            </form>
+                        </div>
+                        <a class="item" *ngIf="!isAdressInput" (click)="OnInput('address')">
+                            <div class="content">
+                                <div class="meta">
+                                    Ajoutez une adresse
+                                </div>
+                                <div class="header">Adresses</div>
+                                <div class="extra">
+                                    <div class="ui right floated">
+                                        <i class="write icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div *ngIf="!isAdressInput ">
+                            <a *ngFor="let address of appService.userData.profile.addresses" (click)="OnInput('address', address)" class="item">
+                                <div class="content">
+                                    <div class="meta">
+                                        Adresse
+                                    </div>
+                                    <div class="header">{{address.street}}, {{address.zipCode}}, {{address.city}}</div>
+                                    <div class="extra">
+                                        <div class="ui right floated">
+                                            <i class="write icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div *ngIf="isAdressInput" class="content">
+                            <form class="ui form container">
+                                <div class="field">
+                                    <label>Adresse</label>
+                                    <div class="ui input">
+                                        <input type="text" [(ngModel)]="currentAddress.street">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Code Postal</label>
+                                    <div class="ui input">
+                                        <input type="text" [(ngModel)]="currentAddress.zipCode">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Ville</label>
+                                    <div class="ui input">
+                                        <input type="text" [(ngModel)]="currentAddress.city">
+                                    </div>
+                                </div>
+                                <div class="ui button green fluid" (click)="OnInput('address')">
+                                    <i class="icon check"></i> Valider
+                                </div>
+                            </form>
+                        </div>
+                        <!--                         <a *ngIf="!isPassWordInput" (click)="OnInput('password')" class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Mot de passe
+                                </div>
+                                <div class="header">●●●●●●●●●●</div>
+                                <div class="extra">
+                                    <div class="ui right floated">
+                                        <i class="write icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div *ngIf="isPassWordInput" class="content">
+                            <form class="ui form container">
+                                <div class="field">
+                                    <label>Ancien mot de passe</label>
+                                    <div class="ui input">
+                                        <input type="password" [(ngModel)]="passwordLast">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Nouveau mot de passe</label>
+                                    <div class="ui input">
+                                        <input type="password" [(ngModel)]="passwordNew">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Confirmer votre nouveau mot de passe</label>
+                                    <div class="ui input">
+                                        <input type="password" [(ngModel)]="passwordConfirm">
+                                    </div>
+                                </div>
+                                <div class="ui button green fluid" (click)="OnInput('password')">
+                                    <i class="icon check"></i> Valider
+                                </div>
+                            </form>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

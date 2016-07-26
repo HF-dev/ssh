@@ -1,0 +1,26 @@
+<div class="headstep ui grey basic inverted segment mobile hidden">
+  <div class="ui text container">
+    <div class="ui ordered four steps">
+      <div [ngClass]="{completed: step > 0, active: step == 0, step: true}" >
+        <div class="content">
+          <div class="title">Description</div>
+        </div>
+      </div>
+      <div [ngClass]="{completed: step > 1, active: step == 1, disabled: step < 1, step: true}" >
+        <div class="content">
+          <div class="title">Lieux de livraison</div>
+        </div>
+      </div>
+      <div [ngClass]="{completed: step > 2, active: step == 2, disabled: step < 2, step: true}" >
+        <div class="content">
+          <div class="title">Prise en charge</div>
+        </div>
+      </div>
+      <div [ngClass]="{completed: step > 3, active: step == 3, disabled: step < 3, step: true}" >
+        <div class="content">
+          <div class="title">Paiement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="main-container ui text container">
+  <div class="ui vertically grid">
+    <div class="ui row form">
+      <div class="sixteen wide column">
+        <div class="list-item ui divided items">
+            <a *ngFor="let location of locations" data-modal="retourModal" class="item">
+              <div class="content" (click)="SelectLocation(location)">
+                <div class="header">{{ location.name }}</div>
+                <div class="meta">
+                  {{ location.address1 }}, {{ location.zipcode }} {{ location.city }}
+                </div>
+                <div class="extra">
+                  <div class="ui right floated">
+                    <i class="marker icon"></i>
+                    {{ location.distance }} m
+                  </div>
+                </div>
+              </div>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

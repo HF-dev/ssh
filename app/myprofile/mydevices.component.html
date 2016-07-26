@@ -1,0 +1,56 @@
+<!-- <h1>HELLO</h1> -->
+<div class="wrapper">
+    <div class="headband ui blue basic inverted segment very padded">
+        <div class="ui container">
+            <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Mes appareils
+        </div>
+      </h2>
+        </div>
+    </div>
+    <div class="main-container ui text container" *ngIf="isReady">
+        <div class="ui vertically grid">
+            <div class="ui row form">
+                <div class="sixteen wide column">
+                    <a class="fluid green ui button" (click)="NewProduct()">
+                        <i class="icon plus"></i> Ajouter un appareil
+                    </a>
+                    <!-- <div [ngClass]="{
+                  'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'transition': true,
+                  'hidden': !isModalActive, 'visible': isModalActive, 'active': isModalActive}"
+               [ngStyle]="{display: isModalActive ? 'block' : 'none'}"
+               (click)="closeModal()">
+
+          </div> -->
+                    <div class="list-item ui divided items">
+                        <div *ngFor="let device of appService.userData.profile.devices" class="item">
+                            <div class="content">
+                                <!-- <img src="device.product.image.contentURL"/> -->
+                                <div class="meta" *ngIf="device.product">
+                                    {{device.product.brandLabel}}
+                                </div>
+                                <div class="meta" *ngIf="!device.product">
+                                    Aucun produit sélectionné
+                                </div>
+                                <a class="header" *ngIf="device.product" [routerLink]="['/device', device.id]">{{device.product.label}}</a>
+                                <a class="header" *ngIf="!device.product" [routerLink]="['/device', device.id]">Aucun produit selectionné</a>
+                                <div class="extra">
+                                    <a data-modal="deleteModal" class="ui right floated">
+                                        <i class="red trash icon" (click)="DeleteProduct(device.id)"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div [ngClass]="{
+      'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'transition': true,
+      'hidden': !isModalActive, 'visible': isModalActive, 'active': isModalActive}" [ngStyle]="{display: isModalActive ? 'block' : 'none'}" (click)="closeModal()">
+    <confirm-mod (closeModal)="closeModal($event)"></confirm-mod>
+    <product-mod (closeModal)="closeModal('none')" (newProduct)="onNewProduct($event)"></product-mod>
+</div>

@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="headband ui blue basic inverted segment very padded">
+    <div class="ui container">
+      <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Prise en charge
+          <div class="sub header only mobile">2. Lieux de livraison</div>
+        </div>
+      </h2>
+    </div>
+  </div>
+<cordon-progress [step]="1"></cordon-progress>
+
+  <div class="map ui grey basic inverted segment">
+    <div class="map__search ui text container">
+      <div class="ui segment">
+        <div class="ui grid">
+            <div class="nine wide column">
+              <div class="ui transparent left icon input fluid">
+                <input type="text" placeholder="Rechercher une adresse" [(ngModel)]="zipCode" (change)="setLocations()">
+                <i class="search icon"></i>
+              </div>
+            </div>
+            <div class="seven wide column">
+              <button class="ui right floated circular icon button">
+                <i class="home icon"></i>
+              </button>
+              <button class="ui right floated circular icon button">
+                <i class="location arrow icon"></i>
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
+    <div class="map__container" style="overflow:hidden;height:100%;width:100%">
+      <location-map [locations]="locationList"></location-map>
+    </div>
+  </div>
+  <location-list [locations]="locationList" (locationSelect)="handleLocation($event)"></location-list>
+</div>
+
+<div [ngClass]="{
+        'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'transition': true,
+        'hidden': !isModalActive, 'visible': isModalActive, 'active': isModalActive}"
+     [ngStyle]="{display: isModalActive ? 'block' : 'none'}"
+     (click)="closeModal()">
+  <retour-mod (closeModal)="closeModal()"></retour-mod>
+</div>

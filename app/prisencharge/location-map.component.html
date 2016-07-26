@@ -1,0 +1,21 @@
+<sebm-google-map
+  [latitude]="latitude"
+  [longitude]="longitude"
+  [zoom]="zoom"
+  [scrollwheel]="false"
+  [disableDefaultUI]="true">
+
+  <sebm-google-map-marker
+    *ngFor="let m of locations"
+    [latitude]="m.latitude"
+    [longitude]="m.longitude"
+    [label]="m.city"
+    [markerDraggable]=true
+    (click)="onMarkerClick()">
+
+    <!-- <sebm-google-map-info-window>
+      <h3 style="color:black;">{{m.city}}</h3>
+    </sebm-google-map-info-window> -->
+  </sebm-google-map-marker>
+
+</sebm-google-map>

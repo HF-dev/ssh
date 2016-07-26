@@ -1,0 +1,35 @@
+<ion-toolbar>
+  <ion-title class="primary">Editer</ion-title>
+  <ion-buttons end>
+    <button (click)="close()">
+      <ion-icon name="ios-close"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
+
+
+<ion-content padding>
+
+  <ion-list inset>
+
+    <ion-item>
+      <ion-label floating>Nom</ion-label>
+      <ion-input type="text" value="Lorem"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Prénom</ion-label>
+      <ion-input type="text" value="Ipsum"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" value="lorem.ipsum@loremipsum.fr"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Mot de passe</ion-label>
+      <ion-input type="password" value="●●●●●●●●●●"></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+
+</ion-content>

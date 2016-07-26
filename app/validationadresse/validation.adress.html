@@ -1,0 +1,137 @@
+<div class="wrapper">
+    <div class="headband ui blue basic inverted segment very padded">
+        <div class="ui container">
+            <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Prise en charge
+          <div class="sub header only mobile">2. Lieux de livraison</div>
+        </div>
+      </h2>
+        </div>
+    </div>
+    <cordon-progress [step]="1"></cordon-progress>
+    <div class="main-container ui text container">
+        <div class="ui divider hidden"></div>
+        <div class="ui container vertically grid three column stackable">
+            <div class="list-item ui divided items">
+                <div class="ui row form">
+                    <a class="item" *ngIf="!isAdressInput" (click)="OnInput('address')">
+                        <div class="content">
+                            <div class="meta">
+                                Ajoutez une adresse
+                            </div>
+                            <div class="header">Adresses</div>
+                            <div class="extra">
+                                <div class="ui right floated">
+                                    <i class="write icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div *ngIf="!isAdressInput ">
+                        <a *ngFor="let address of appService.userData.profile.addresses" (click)="OnInput('address', address)" class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Adresse
+                                </div>
+                                <div class="header">{{address.street}}, {{address.zipCode}}, {{address.city}}</div>
+                                <div class="extra">
+                                    <div class="ui right floated">
+                                        <i class="write icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div *ngIf="isAdressInput" class="content">
+                        <form class="ui form container">
+                            <div class="field">
+                                <label>Adresse</label>
+                                <div class="ui input">
+                                    <input type="text" [(ngModel)]="currentAddress.street">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Code Postal</label>
+                                <div class="ui input">
+                                    <input type="text" [(ngModel)]="currentAddress.zipCode">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Ville</label>
+                                <div class="ui input">
+                                    <input type="text" [(ngModel)]="currentAddress.city">
+                                </div>
+                            </div>
+                            <div class="ui button green fluid" (click)="OnInput('address')">
+                                <i class="icon check"></i> Valider
+                            </div>
+                        </form>
+                    </div>
+                    <!--       <div class="ui row form">
+                <form class="ui form container">
+                  <div class="field">
+                    <label>Adresse</label>
+                    <div class="ui input">
+                      <input type="text" [(ngModel)]="userData.addresses[0].street">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Code Postal</label>
+                    <div class="ui input">
+                      <input type="text" [(ngModel)]="userData.addresses[0].zipCode">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Ville</label>
+                    <div class="ui input">
+                      <input type="text" [(ngModel)]="userData.addresses[0].city">
+                    </div>
+                  </div>
+
+                  <div class="ui button green fluid" (click)="onValidAddress()">
+                    <i class="icon check"></i>
+                    Valider
+                  </div>
+                </form>
+        </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="main-container ui text container">
+  <div class="ui divider hidden"></div>
+  <div class="ui container grid three column stackable">
+<div class="main-container ui text container">
+  <div class="ui vertically grid">
+    <div class="ui row form">
+              <form class="ui form container">
+                <div class="field">
+                  <label>Adresse</label>
+                  <div class="ui input">
+                    <input type="text" [(ngModel)]="userData.addresses[0].street">
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Code Postal</label>
+                  <div class="ui input">
+                    <input type="text" [(ngModel)]="userData.addresses[0].zipCode">
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Ville</label>
+                  <div class="ui input">
+                    <input type="text" [(ngModel)]="userData.addresses[0].city">
+                  </div>
+                </div>
+
+                <div class="ui button green fluid" (click)="onValidAddress()">
+                  <i class="icon check"></i>
+                  Valider
+                </div>
+              </form>
+      </div>
+    </div>
+</div>
+</div> -->

@@ -1,0 +1,18 @@
+<div class="field">
+    <label>Décrire la panne</label>
+    <select class="ui dropdown" [(ngModel)]="appService.appDatas.failureSelector.selectedFailureFamilyId">
+        <option *ngFor="let family of appService.appDatas.failureSelector.failureFamily" value="{{family.id}}">{{family.label}}</option>
+    </select>
+</div>
+<div class="field">
+    <select class="ui dropdown" [(ngModel)]="appService.appDatas.failureSelector.selectedFailureId">
+        <option *ngFor="let failure of appService.appDatas.failureSelector.failures" value="{{failure.id}}">{{failure.label}}</option>
+    </select>
+</div>
+<div class="field">
+    <textarea placeholder="Description" [(ngModel)]="appService.appDatas.currentPanne.failureDescription"></textarea>
+</div>
+<a class="ui fluid green button" (click)="onSendPanne()">
+    <!--  -->
+    Valider
+</a>

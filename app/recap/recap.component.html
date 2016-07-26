@@ -1,0 +1,73 @@
+<div class="wrapper">
+    <div class="headband ui blue basic inverted segment very padded">
+        <div class="ui container">
+            <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Récapitulatif
+        </div>
+      </h2>
+        </div>
+    </div>
+    <div class="main-container ui text container">
+        <div class="ui stackable two column vertically grid">
+            <div class="ui row form">
+                <div class="column">
+                    <img class="ui fluid image" src="http://fpoimg.com/400x400">
+                    <a class="ui fluid green button" [routerLink]="['/panne', appService.appDatas.currentPanneId]">
+                        <i class="icon check"> </i> editer
+                    </a>
+                </div>
+                <div class="column">
+                    <div class="list-item ui divided items" *ngIf="appService.appDatas.currentPanne
+">
+                        <div class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Modele
+                                </div>
+                                <div class="header" *ngIf="appService.appDatas.currentPanne.device && appService.appDatas.currentPanne.device.product">{{appService.appDatas.currentPanne.device.product.label}}</div>
+                                <div class="header" *ngIf="!(appService.appDatas.currentPanne.device && appService.appDatas.currentPanne.device.product)"> Non défini</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Adresse de prise en charge
+                                </div>
+                                <div class="header" *ngIf="appService.appDatas.currentPanne.repairCenterAddress">{{appService.appDatas.currentPanne.repairCenterAddress.street}}, {{appService.appDatas.currentPanne.repairCenterAddress.zipCode}} {{appService.appDatas.currentPanne.repairCenterAddress.city}}</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Adresse de livraison
+                                </div>
+                                <div class="header" *ngIf="appService.appDatas.currentPanne.returnAddress">{{appService.appDatas.currentPanne.returnAddress.street}}, {{appService.appDatas.currentPanne.returnAddress.zipCode}} {{appService.appDatas.currentPanne.returnAddress.city}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Etat
+                                </div>
+                                <div class="header">{{appService.appDatas.currentPanne.status}}</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <div class="meta">
+                                    Description de la panne
+                                </div>
+                                <p>{{appService.appDatas.currentPanne.failureDescription}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="ui fluid green button">
+                        <i class="icon check"></i> Valider
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

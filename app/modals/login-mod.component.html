@@ -1,0 +1,48 @@
+<div id="loginModal"
+    [ngClass]="{
+       'ui': true,
+       'small': true,
+       'modal': true,
+       'transition': true,
+       'visible': isOn,
+       'active': isOn,
+       'hidden': !isOn,
+       'dimmer': !isOn}"
+    [ngStyle]="{
+       marginTop: isOn ? '-166px' : '0px' ,
+       display: isOn ? 'block' : 'none'}"
+       (click)="OnClick($event)">
+
+  <i class="close icon" (click)="toggleOff()"></i>
+  <div class="header">
+    Créer un compte
+  </div>
+  <div class="content segment">
+    <div class="ui column middle container aligned very relaxed stackable grid">
+
+
+      <div class="column">
+        <div class="ui form">
+
+
+          <div class="field">
+            <label>Email</label>
+            <div class="ui input">
+              <input type="email" placeholder="Email">
+            </div>
+          </div>
+          <div class="field">
+            <label>Mot de passe</label>
+            <div class="ui left icon input">
+              <input type="password">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <a class="item" href="#">Pas encore inscrit ?</a>
+          <div class="ui divider hidden"></div>
+          <div class="ui green fluid submit button">Valider</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

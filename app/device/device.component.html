@@ -1,0 +1,57 @@
+<!-- <h1>HELLO</h1> -->
+<div class="wrapper">
+    <div class="headband ui blue basic inverted segment very padded">
+        <div class="ui container">
+            <h2 class="ui center inverted aligned header">
+        <div class="content" *ngIf="appService.appDatas.currentUserDevice.product">
+          Mon {{appService.appDatas.currentUserDevice.product.label}}
+        </div>
+        <div class="content" *ngIf="!appService.appDatas.currentUserDevice.product">
+          Aucun produit selectionné
+        </div>
+      </h2>
+        </div>
+    </div>
+    <div class="main-container ui text container">
+        <div class="ui vertically grid">
+            <div class="ui row form">
+                <div class="sixteen wide column">
+                    <div class="image content padded">
+                        <form class="ui form container">
+                            <div class="field">
+                                <label>Sélectionnez un type d'appareil</label>
+                                <select class="ui dropdown" [(ngModel)]="appService.appDatas.deviceSelector.selectedFamilyId">
+                                    <option *ngFor="let type of appService.appDatas.deviceSelector.families" value="{{type.id}}">{{type.label}}</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Sélectionnez une marque</label>
+                                <select class="ui dropdown" [(ngModel)]="appService.appDatas.deviceSelector.selectedBrandId">
+                                    <option *ngFor="let brand of appService.appDatas.deviceSelector.brands" value="{{brand.id}}">{{brand.label}}</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label value="">Sélectionnez un modèle</label>
+                                <select class="ui dropdown" [(ngModel)]="appService.appDatas.deviceSelector.selectedRefProduitId">
+                                    <option *ngFor="let device of appService.appDatas.deviceSelector.refProduits" value="{{device.id}}">{{device.label}}</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label value="">IME</label>
+                                <input type="text" class="ui " [(ngModel)]="appService.appDatas.currentUserDevice.uniqueNumber" />
+                            </div>
+                            <div class="field">
+                                <div [ngClass]="{'ui':true, 'toggle':true, 'checkbox':true, 'checked': isWaranty}">
+                                    {{appService.appDatas.currentUserDevice.waranty}}
+                                    <input type="checkbox" name="gift" tabindex="0" class="hidden">
+                                    <label>Garantie</label>
+                                </div>
+                            </div>
+                            <div class="ui button green fluid" (click)="onValid()">Valider</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<!-- <h1>HELLO</h1> -->
+<div class="wrapper">
+    <div class="headband ui blue basic inverted segment very padded">
+        <div class="ui container">
+            <h2 class="ui center inverted aligned header">
+        <div class="content">
+          Mes pannes
+        </div>
+      </h2>
+        </div>
+    </div>
+    <div class="main-container ui text container">
+        <div class="ui vertically grid">
+            <div class="ui row form">
+                <div class="sixteen wide column">
+                    <a class="fluid green ui button" [routerLink]="['/panne']">
+                        <i class="icon plus"></i> Ajouter une nouvelle panne
+                    </a>
+                    <!-- <div [ngClass]="{
+                  'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'transition': true,
+                  'hidden': !isModalActive, 'visible': isModalActive, 'active': isModalActive}"
+               [ngStyle]="{display: isModalActive ? 'block' : 'none'}"
+               (click)="closeModal()">
+
+          </div> -->
+                    <div class="list-item ui divided items" *ngIf="appService.userData.rmas">
+                        <div *ngFor="let rma of appService.userData.rmas" class="item">
+                            <div class="content">
+                                <!-- <img src="device.product.image.contentURL"/> -->
+                                <div class="meta" *ngIf="rma.failure">
+                                    {{rma.failure.label}}
+                                </div>
+                                <div class="meta" *ngIf="! rma.failure">
+                                    Aucune panne définie
+                                </div>
+                                <a class="header" [routerLink]="['/recapitulatif', rma.id ]" *ngIf="rma.device && rma.device.product">{{rma.device.product.label}}  </a>
+                                <a class="header" [routerLink]="['/recapitulatif', rma.id ]" *ngIf="!(rma.device && rma.device.product)">Aucun device associé  </a>
+                                <div class="extra">
+                                    <a data-modal="deleteModal" class="ui right floated">
+                                        <i class="red trash icon" (click)="appService.userData.deleteRma(rma.id)"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div [ngClass]="{
+      'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'transition': true,
+      'hidden': !isModalActive, 'visible': isModalActive, 'active': isModalActive}" [ngStyle]="{display: isModalActive ? 'block' : 'none'}" (click)="closeModal()">
+    <confirm-mod (closeModal)="closeModal($event)"></confirm-mod>
+</div>

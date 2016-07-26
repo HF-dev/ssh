@@ -1,0 +1,64 @@
+<div class="ui sidebar inverted blue right vertical menu">
+    <a class="item">
+    Prise en charge
+  </a>
+    <a class="item">
+    Lorem
+  </a>
+    <a class="item">
+    Ipsum
+  </a>
+    <a class="item">
+    Créer un compte
+  </a>
+    <a class="item">
+    Connexion
+  </a>
+</div>
+<div class="pusher">
+    <div class="main-menu ui fixed secondary large inverted menu blue">
+        <header class="ui container">
+            <a [routerLink]="['/']" class="logo-item header item">
+                <img class="logo" src="./images/logo.png">
+            </a>
+            <a class="item active mobile hidden">Prise en charge</a>
+            <a href="#" class="item mobile hidden">Lorem</a>
+            <a href="#" class="item mobile hidden">Ipsum</a>
+            <div class="right menu" *ngIf="!appService.userData.isLogged">
+                <a data-modal="signUpModal" class="item mobile hidden" (click)="SignUp()">Créer un compte</a>
+                <a data-modal="loginModal" class="item mobile hidden" (click)="OnLogin()">Connexion</a>
+                <a class="open-menu toc item mobile only">
+                    <i class="sidebar icon"></i>
+                </a>
+            </div>
+            <div class="right menu" *ngIf="appService.userData.isLogged">
+                <div [ngClass]="{
+                                'item': true,
+                                'mobile': true,
+                                'hidden': !isMeOver,
+                                'active': isMeOver,
+                                'visible': isMeOver
+                               }" (mouseenter)="OnMouseEnterMe()" (mouseleave)="OnMouseLeaveMe()">
+                    <div class="ui pointing dropdown link item">
+                        {{appService.userData.profile.firstName}} {{appService.userData.profile.lastName}}
+                        <i class="angle down icon"></i>
+                        <div [ngClass]="{'menu': true, 'transition': true, 'hidden': !isMeOver, 'visible': isMeOver}">
+                            <a [routerLink]="['/mon-compte']" (click)="OnMouseLeaveMe()" class="item">Mes coordonnées</a>
+                            <a [routerLink]="['/mes-appareils']" (click)="OnMouseLeaveMe()" class="item">Mes appareils</a>
+                            <a [routerLink]="['/mes-pannes']" (click)="OnMouseLeaveMe()" class="item">Mes pannes</a>
+                            <a href="" (click)="OnMouseLeaveMe()" class="item">Deconnexion</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="open-menu toc item mobile only">
+                    <i class="sidebar icon"></i>
+                </a>
+            </div>
+        </header>
+    </div>
+    <div [ngClass]="{
+          'ui': true, 'dimmer': true, 'modals': true, 'page': true, 'transition': true,
+          'hidden': !isModalActive, 'visible': isModalActive, 'active': isModalActive}" [ngStyle]="{display: isModalActive ? 'block' : 'none'}" (click)="closeModal()">
+        <signup-mod (closeModal)="closeModal()"></signup-mod>
+        <login-mod (closeModal)="closeModal()"></login-mod>
+    </div>
